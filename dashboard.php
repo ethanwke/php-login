@@ -1,5 +1,9 @@
 <?php
   $name = $_POST['name'];
+  $data_name = array("ethan", "xuan hao");
+  if(!in_array($name,$data_name)){
+     echo "<script>window.location.href='index.php';</script>";
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
