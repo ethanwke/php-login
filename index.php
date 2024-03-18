@@ -29,17 +29,22 @@ if(isset($_COOKIE['loggedIn'])){
       
 
       $name_password = array("ethan"=>"ethan", "xuan hao"=>"xuan hao");
-      if($password == $name_password[$name]){
-        echo "Login Successful";
-        setcookie("name", $name, time() + 86400, "/"); // expires in one day
-        setcookie("password", $password, time() + 86400);
-        setcookie("loggedIn", true, time() + 86400, "/"); // log in status is valid for a day
-        echo "<script>window.location.href='dashboard.php';</script>";
+      if (in_array($name, $name_password) && in_array($password, $name_password)) {
+        if($password == $name_password[$name]){
+          echo "Login Successful";
+          setcookie("name", $name, time() + 86400, "/"); // expires in one day
+          setcookie("password", $password, time() + 86400);
+          setcookie("loggedIn", true, time() + 86400, "/"); // log in status is valid for a day
+          echo "<script>window.location.href='dashboard.php';</script>";
+        }
+        else {
+          echo "<h2 style='color: red;'>Login Failed</h2><br>Please check your username and password.";
+        }
       }
-      else{
+    else{
         echo "<h2 style='color: red;'>Login Failed</h2><br>Please check your username and password.";
-      }
     }
+  }
   ?>
   <p>Please Login</p>
   <h3>New Feature:</h3>
