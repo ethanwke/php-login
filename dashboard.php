@@ -2,7 +2,11 @@
   $name = $_COOKIE['name'];
   $password = $_COOKIE['password'];
   $name_password = array("ethan"=>"ethan", "xuan hao"=>"xuan hao");
-  if ($password != $name_password[$name]){
+  if (in_array($name, $name_password) && in_array($password, $name_password)){
+    if ($password != $name_password[$name]){
+      header("Location: index.php");
+    }
+  } else {
     header("Location: index.php");
   }
 ?>
